@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  max-width: 100%;
 }
 
 .App-logo {
@@ -28,11 +29,34 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.products {
+  max-width: 100%;
+  padding: 0;
+}
+
+.filtr-container {
+  max-width: 90%;
+  margin: auto;
+}
+
+.filtr-item {
+  width: 25%;
+}
+
+.filtr-controls {
+  display: inline-block;
+  padding: 10px;
+}
+
+.book {
+  padding: 10px;
+  width: 100%; /* or a specific width */
+  aspect-ratio: 663 / 1024; /* Desired aspect ratio */
+  overflow: hidden; /* Optional: to hide overflow */
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Options: cover, contain, fill, none, scale-down */
   }
 }

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "typeRoots": ["./node_modules/@types", "./src"], // Add your types directory if necessary
+    "types": ["shopify-buy"] // Include the shopify-buy type if you create one
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
