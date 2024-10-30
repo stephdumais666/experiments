@@ -1,7 +1,7 @@
 import React from "react";
 import { ShopifyProduct } from "../types/types";
 import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup/ButtonGroup";
+import ButtonGroup from "@mui/material/ButtonGroup/";
 
 interface Props {
   products: ShopifyProduct[];
@@ -9,33 +9,27 @@ interface Props {
 }
 
 const GridFilters: React.FC<Props> = ({ products, cat }) => {
-  const filters: React.JSX.Element[] = [];
-
   const categories = [
     ...new Set(
-      products.map((product) => {
-        const category = product[cat as keyof ShopifyProduct];
-        if (typeof category === "string") {
-          return category;
-        }
-      }),
+      products
+        .map((product) => {
+          const category = product[cat as keyof ShopifyProduct];
+          return typeof category === "string" ? category : null;
+        })
+        .filter((cat) => cat !== null),
     ),
   ];
 
-  if (categories) {
-    categories.map((category) => {
-      if (category) {
-        const item = (
-          <Button variant="outlined" key={category} data-filter={category}>
+  return (
+    <ButtonGroup className="filtr-controls">
+      {categories.length > 0 &&
+        categories.map((category) => (
+          <Button key={category} variant="outlined" data-filter={category}>
             {category}
           </Button>
-        );
-        filters.push(item);
-      }
-    });
-  }
-
-  return <ButtonGroup className="filtr-controls">{filters}</ButtonGroup>;
+        ))}
+    </ButtonGroup>
+  );
 };
 
 export default GridFilters;
